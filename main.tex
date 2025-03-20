@@ -1,0 +1,69 @@
+\documentclass[letterpaper, 12pt, titlepage]{article} % Tipo de documento
+
+% ================================================================
+% PAQUETES BÁSICOS Y CONFIGURACIÓN ESENCIAL
+% ================================================================
+\usepackage[utf8]{inputenc}        % Codificación de caracteres UTF-8
+\usepackage[spanish]{babel}        % Localización en español (guiones, títulos)
+\usepackage[margin=1in]{geometry}  % Configuración de márgenes de página
+
+% ================================================================
+% TIPOGRAFÍA Y FORMATO DE TEXTO
+% ================================================================
+\usepackage{helvet}                % Fuente Sans-Serif (Helvetica-like)
+\renewcommand{\familydefault}{\sfdefault} % Establece Helvet como fuente principal
+\usepackage{setspace}              % Control de interlineado (1.5, doble espacio)
+\usepackage{parskip}               % Espaciado entre párrafos (en lugar de sangría)
+\usepackage{ragged2e}              % Mejor manejo de justificación de texto
+
+% ================================================================
+% ELEMENTOS GRÁFICOS Y DISEÑO
+% ================================================================
+\usepackage{graphicx}              % Manejo de imágenes (inserción y escalado)
+\usepackage{xcolor}                % Sistema de colores personalizados
+\usepackage{adjustbox}             % Ajuste automático de tablas/objetos
+\usepackage{pdflscape}             % Páginas en orientación horizontal
+
+% ================================================================
+% TABLAS PROFESIONALES
+% ================================================================
+\usepackage{booktabs}              % Reglas tipográficas para tablas (formato APA)
+\usepackage{xltabular}             % Tablas largas que ocupan todo el ancho del texto
+% ================================================================
+% LISTAS Y ESTRUCTURAS
+% ================================================================
+\usepackage{enumitem}              % Personalización avanzada de listas
+\setlist{nosep, leftmargin=*, wide=0pt} % Listas ultra compactas
+\usepackage{titlesec}              % Formato personalizado para títulos/secciones
+
+% ================================================================
+% HIPERVÍNCULOS Y METADATOS PDF
+% ================================================================
+\usepackage{hyperref}              % Enlaces interactivos y metadatos PDF
+\hypersetup{
+    colorlinks = true,             % Colores en lugar de cajas
+    linkcolor  = blue!70,          % Color para enlaces internos
+    urlcolor   = cyan!80,          % Color para URLs
+    pdftitle   = {Plan de clase de Asignatura}, % Título del PDF
+    pdfauthor  = {Nombre del autor, Nivel educativo}, % Autor del PDF
+}
+
+% ================================================================
+% ENCABEZADOS Y PIES DE PÁGINA
+% ================================================================
+\usepackage{fancyhdr}              % Diseño profesional de cabeceras/pies
+
+% ================================================================
+% CONFIGURACIONES FINALES
+% ================================================================
+\renewcommand{\thesection}{\Roman{section}} % Numeración romana para secciones
+\newcommand{\universidad}{Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense} % Nombre de la universidad
+\newcommand{\asignatura}{Nombre de la asignatura} % Nombre de la asignatura
+\newcommand*{\thead}[1]{\multicolumn{1}{>{\centering\arraybackslash}X}{\bfseries #1}} % Encabezado centrado y en negritas en tablas
+
+\begin{document}
+
+\input{sections/00_portada.tex}
+\input{sections/01_datos_generales.tex}
+
+\end{document}
