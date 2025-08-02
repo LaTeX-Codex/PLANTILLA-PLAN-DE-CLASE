@@ -1,62 +1,92 @@
-\documentclass[letterpaper, 12pt, titlepage]{article} % Tipo de documento
+\documentclass[letterpaper, 12pt, titlepage]{article} % Tipo de documento, configurado con: tamaño carta, tamaño de fuente 12pt, inclusión de página de título
 
 % ================================================================
-% PAQUETES BÁSICOS Y CONFIGURACIÓN ESENCIAL
+%* PAQUETES BÁSICOS Y CONFIGURACIÓN ESENCIAL
 % ================================================================
-\usepackage[utf8]{inputenc}        % Codificación de caracteres UTF-8
-\usepackage[spanish]{babel}        % Localización en español (guiones, títulos)
-\usepackage[margin=1in]{geometry}  % Configuración de márgenes de página
+\usepackage[utf8]{inputenc}         % Codificación de caracteres UTF-8
+\usepackage[spanish]{babel}         % Localización en español (guiones, títulos)
+\usepackage[margin=1in]{geometry}   % Configuración de márgenes de página
 
 % ================================================================
-% TIPOGRAFÍA Y FORMATO DE TEXTO
+%* TIPOGRAFÍA Y FORMATO DE TEXTO
 % ================================================================
-\usepackage{helvet}                % Fuente Sans-Serif (Helvetica-like)
-\renewcommand{\familydefault}{\sfdefault} % Establece Helvet como fuente principal
-\usepackage{setspace}              % Control de interlineado (1.5, doble espacio)
-\usepackage{parskip}               % Espaciado entre párrafos (en lugar de sangría)
-\usepackage{ragged2e}              % Mejor manejo de justificación de texto
+%\usepackage{fontspec}              % Manejo de fuentes con XeLaTeX
+%\setmainfont{Myriad Pro} % Fuente principal (Myriad Pro)
+\usepackage{helvet}                         % Fuente Sans-Serif (Helvetica)
+\renewcommand{\familydefault}{\sfdefault}   % Establece Helvet como fuente principal
+\usepackage{setspace}                       % Control de interlineado (1.5, doble espacio)
+\usepackage{parskip}                        % Espaciado entre párrafos (en lugar de sangría)
+\usepackage{ragged2e}                       % Mejor manejo de justificación de texto
 
-% ================================================================
-% ELEMENTOS GRÁFICOS Y DISEÑO
-% ================================================================
-\usepackage{graphicx}              % Manejo de imágenes (inserción y escalado)
-\usepackage{xcolor}                % Sistema de colores personalizados
-\usepackage{pdflscape}             % Páginas en orientación horizontal
-
-% ================================================================
-% TABLAS PROFESIONALES
-% ================================================================
-\usepackage{booktabs}              % Reglas tipográficas para tablas (formato APA)
-\usepackage{xltabular}             % Tablas largas que ocupan todo el ancho del texto
-% ================================================================
-% LISTAS Y ESTRUCTURAS
-% ================================================================
-\usepackage{enumitem}              % Personalización avanzada de listas
-\setlist{nosep, leftmargin=*, wide=0pt} % Listas ultra compactas
-
-% ================================================================
-% HIPERVÍNCULOS Y METADATOS PDF
-% ================================================================
-\usepackage{hyperref}              % Enlaces interactivos y metadatos PDF
-\hypersetup{
-    colorlinks = true,             % Colores en lugar de cajas
-    linkcolor  = blue!70,          % Color para enlaces internos
-    urlcolor   = cyan!80,          % Color para URLs
-    citecolor  = magenta!70,           % Color para citas
-}
-
-% ================================================================
-% CONFIGURACIONES FINALES
-% ================================================================
 \renewcommand{\thesection}{\Roman{section}} % Numeración romana para secciones
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} % Subsecciones: 1.1, 1.2...
 \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}} % Subsubsecciones: 1.1.1, 1.1.2...
 
-\newcommand{\universidad}{Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense} % Nombre de la universidad
-\newcommand{\carrera}{Nombre de la carrera} % Nombre de la asignatura
-\newcommand{\asignatura}{Nombre de la asignatura} % Nombre de la asignatura
-\newcommand*{\thead}[1]{\multicolumn{1}{>{\centering\arraybackslash}X}{\bfseries #1}} % Encabezado centrado y en negritas en tablas
+% ================================================================
+%* ELEMENTOS GRÁFICOS Y DISEÑO
+% ================================================================
+\usepackage{graphicx}               % Manejo de imágenes (inserción y escalado)
+\usepackage{xcolor}                 % Sistema de colores personalizados
+\usepackage{pdflscape}              % Páginas en orientación horizontal
 
+% ================================================================
+%* TABLAS PROFESIONALES
+% ================================================================
+\usepackage{booktabs}              % Reglas tipográficas para tablas (formato APA)
+\usepackage{tabularx}              % Tablas con ancho ajustable
+\usepackage{xltabular}             % Tablas largas que ocupan todo el ancho del texto
+\usepackage{makecell}              % Celdas personalizadas en tablas
+% ================================================================
+% LISTAS Y ESTRUCTURAS
+% ================================================================
+\usepackage{enumitem}                   % Personalización avanzada de listas
+\setlist{nosep, leftmargin=*, wide=0pt} % Listas ultra compactas
+
+% ================================================================
+%* HIPERVÍNCULOS Y METADATOS PDF
+% ================================================================
+\usepackage[hyphens]{url}
+\usepackage{hyperref}             % Hipervínculos y referencias internas
+\hypersetup{
+    breaklinks=true,                % Configuración de hipervínculos
+    colorlinks=true,                % Habilita los enlaces coloreados
+    linkcolor=blue,                 % Color de los enlaces internos
+    urlcolor=blue,                  % Color de los enlaces externos
+    citecolor=blue,                 % Color de las citas
+    pdfborder={0 0 0}               % Sin bordes en los enlaces
+}
+
+% ================================================================
+%* TAREAS PENDIENTES Y ANOTACIONES
+% ================================================================
+\setlength{\marginparwidth}{2cm} % Soluciona el problema de \todonotes
+\usepackage{todonotes} % Paquete principal
+\setuptodonotes{
+    size=\tiny, % Tamaño de las notas
+}
+% Comandos personalizados (opcional)
+\newcommand{\pendiente}[1]{\todo[color=red!30, inline]{#1}}
+\newcommand{\revisar}[1]{\todo[color=yellow!30, inline]{#1}}
+\newcommand{\actualizar}[1]{\todo[color=green!30, inline]{#1}}
+
+% ================================================================
+%! CONFIGURACIONES FINALES
+% ================================================================
+\newcommand{\universidad}{Universidad de las Regiones Autónomas de la Costa Caribe Nicaragüense} % Nombre de la universidad
+\newcommand{\carrera}{Nombre de la Carrera} % Nombre de la carrera
+\newcommand{\asignatura}{Nombre de la Asignatura} % Nombre de la asignatura
+\newcommand{\requisito}{Nombre del Requisito} % Nombre del requisito (asignatura previa)
+\newcommand{\codigo}{XXX-XXX} % Código de la asignatura
+\newcommand{\docente}{Nombre del Docente, Ing.} % Nombre del docente
+
+% ================================================================
+% PAQUETE LOREM IPSUM PARA TEXTO DE EJEMPLO, BORRAR EN PRODUCCIÓN
+% ================================================================
+\usepackage{lipsum} % Generador de texto de ejemplo
+
+% ================================================================
+% INICIO DEL DOCUMENTO (contenido principal)
+% ================================================================
 \begin{document}
 
 \input{sections/00_portada.tex}
